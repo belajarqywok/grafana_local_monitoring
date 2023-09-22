@@ -1,0 +1,11 @@
+groups:
+- name: demo-service-alerts
+  rules:
+  - alert: DemoServiceDown
+    expr: up == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      title: 'Service {{ $labels.job }} is down'
+      description: 'The service {{ $labels.job }} is currently down.'
